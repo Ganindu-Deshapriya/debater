@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { MessageBubble } from './components/MessageBubble';
+import { ConclusionBox } from './components/ConclusionBox';
 
 type Message = {
   id: string;
@@ -10,9 +12,9 @@ type Message = {
 };
 
 export default function DebateSimulator() {
-  const [topic, setTopic] = useState("Is a hotdog a sandwich?");
-  const [botAPersonality, setBotAPersonality] = useState("A stubborn New Yorker who takes food strictly literally.");
-  const [botBPersonality, setBotBPersonality] = useState("A chaotic philosopher who believes everything is a sandwich.");
+  const [topic, setTopic] = useState("Is pinapple on pizza acceptable?");
+  const [botAPersonality, setBotAPersonality] = useState("The Italian who believes Pizza is a sacred tradition of savory harmony, not a dumping ground for tropical acidic fruit.");
+  const [botBPersonality, setBotBPersonality] = useState("The Sweet-&-Salty Visionary who believes flavor doesn't care about your 'traditions'");
   const [tone, setTone] = useState("casual");
   const [numTurns, setNumTurns] = useState(4);
 
@@ -161,7 +163,7 @@ export default function DebateSimulator() {
             <button
               onClick={startDebate}
               disabled={isDebating}
-              className="w-full bg-black text-white font-bold py-3 rounded hover:bg-gray-800 disabled:bg-gray-400 transition"
+              className="w-full bg-orange-500 text-white font-bold py-3 rounded-3xl hover:bg-red-600 disabled:bg-gray-400 transition"
             >
               {isDebating ? "Debating..." : "Start Debate"}
             </button>
@@ -169,22 +171,7 @@ export default function DebateSimulator() {
         </div>
         <div className="space-y-6">
           {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`flex flex-col ${msg.botId === 'Bot A' ? 'items-start' : 'items-end'}`}
-            >
-              <div className={`max-w-[80%] p-4 rounded-xl shadow-md ${msg.botId === 'Bot A' ? 'bg-blue-50 border-l-4 border-blue-500' : 'bg-green-50 border-r-4 border-green-500'
-                }`}>
-                <strong className={`block mb-1 ${msg.botId === 'Bot A' ? 'text-blue-700' : 'text-green-700'}`}>
-                  {msg.botId}
-                </strong>
-                
-                
-                <div className="text-gray-800 whitespace-pre-wrap">
-                  <ReactMarkdown>{msg.text}</ReactMarkdown>
-                </div>
-              </div>
-            </div>
+            <MessageBubble key={msg.id} msg={msg} />
           ))}
           {isDebating && messages.length < numTurns && (
             <div className="text-center text-gray-500 animate-pulse font-medium">
@@ -192,14 +179,7 @@ export default function DebateSimulator() {
             </div>
           )}
           {conclusion && (
-            <div className="mt-8 p-6 bg-yellow-50 border-l-4 border-yellow-500 rounded-xl shadow">
-              <strong className="block mb-2 text-yellow-700 text-lg">Debate Conclusion</strong>
-              
-              
-              <div className="text-gray-900 whitespace-pre-wrap">
-                <ReactMarkdown>{conclusion}</ReactMarkdown>
-              </div>
-            </div>
+            <ConclusionBox conclusion={conclusion} />
           )}
         </div>
       </main>
