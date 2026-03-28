@@ -31,9 +31,16 @@ export async function POST(req: NextRequest) {
       `;
     }
 
+
+    
+    const modelName = process.env.GEMINI_MODEL_NAME;
+    if (!modelName) {
+      throw new Error('GEMINI_MODEL_NAME environment variable is required');
+    }
+
     // Call the AI model
     const response = await ai.models.generateContent({
-      model: 'gemma-3-27b-it',
+      model: modelName,
       contents: fullPrompt,
     });
 
