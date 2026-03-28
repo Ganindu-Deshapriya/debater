@@ -17,6 +17,7 @@ export default function DebateSimulator() {
   const [botBPersonality, setBotBPersonality] = useState("The Sweet-&-Salty Visionary who believes flavor doesn't care about your 'traditions'");
   const [tone, setTone] = useState("casual");
   const [numTurns, setNumTurns] = useState(4);
+  const [numTurnsInput, setNumTurnsInput] = useState(String(4));
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [isDebating, setIsDebating] = useState(false);
@@ -49,7 +50,23 @@ export default function DebateSimulator() {
     }
   };
 
+  const normalizeNumTurns = (value: string) => {
+    const parsed = Number(value);
+    if (!Number.isInteger(parsed)) {
+      return numTurns;
+    }
+    return Math.max(2, Math.min(20, parsed));
+  };
+
+  const validateNumTurns = () => {
+    const normalized = normalizeNumTurns(numTurnsInput);
+    setNumTurns(normalized);
+    setNumTurnsInput(String(normalized));
+    return normalized;
+  };
+
   const startDebate = async () => {
+    const validatedNumTurns = validateNumTurns();
     setIsDebating(true);
     setConclusion(null);
     let currentMessages: Message[] = [];
@@ -57,7 +74,7 @@ export default function DebateSimulator() {
 
     // Alternate bots for the selected number of turns
     const bots: ('Bot A' | 'Bot B')[] = ['Bot A', 'Bot B'];
-    for (let i = 0; i < numTurns; i++) {
+    for (let i = 0; i < validatedNumTurns; i++) {
       const botId = bots[i % 2];
       const responseText = await fetchBotResponse(botId, currentMessages);
       const newMessage: Message = {
@@ -118,8 +135,9 @@ export default function DebateSimulator() {
                 max={20}
                 step={1}
                 className="w-full p-2 border border-gray-300 rounded focus:ring-2 text-gray-800"
-                value={numTurns}
-                onChange={e => setNumTurns(Math.max(2, Math.min(20, Number(e.target.value))))}
+                value={numTurnsInput}
+                onChange={(e) => setNumTurnsInput(e.target.value)}
+                onBlur={validateNumTurns}
                 disabled={isDebating}
               />
               <span className="text-xs text-gray-500">Turns alternate between bots. Even numbers recommended.</span>
