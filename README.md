@@ -1,12 +1,12 @@
 
-# DebaterAI
+# Debater-AI by GaninduDesh
 
 ## How the Idea Was Born 💡
 
 While scrolling through reels the other day this whole "Was Thanos Right?" thing came back into my feed. And right as it came to my mind i thought why not argue with an AI about it? 🤔 Then while arguing with gemini my thought went to "why even bother when i can let 2 Agents or personalities can debate themselves and give me an answer? that way i get a show 🍿, and an ANSWER!✅
 And here it is,a Debater-AI, a fun project to now let 2 agents debate over the questions that keep you up at night.😅
 
-visit : https://debater-ai-gdesh.vercel.app/ 
+visit and try : https://debater-ai-gdesh.vercel.app/ 
 
 or
 
@@ -28,11 +28,11 @@ or
 		 ```env
 		 GEMINI_API_KEY=your-api-key-here
 		 ```
-	 - (Optional) Set the model name to use (default is `gemma-3-27b-it`):
+	 - Set the model name to use:
 		 ```env
 		 GEMINI_MODEL_NAME=gemma-3-27b-it
 		 ```
-	 - Now you can change the model by editing `GEMINI_MODEL_NAME` in `.env.local` without touching your code.
+	 - You can change the model by editing `GEMINI_MODEL_NAME` in `.env.local` 
 
 4. **Run the development server:**
 	 ```sh
@@ -48,8 +48,8 @@ or
 - **TypeScript** for type safety
 - **Tailwind CSS** for styling
 - **react-markdown** for rendering Markdown output
-- **Node.js** for the backend runtime
-- **OpenAI API** (or similar LLM provider) for generating debate responses (assumed, update if different)
+- **Node.js**
+- **Gemini API** for generating debate responses (Google AI Studio)
 
 ## Skills Achieved / Learned
 
@@ -65,24 +65,13 @@ or
 	- Used chat history to maintain debate context.
 
 ### Web Development
-- **Component-based Architecture:**
-	- Refactored UI into reusable React components for maintainability.
 - **Markdown Rendering:**
 	- Used `react-markdown` to display rich, formatted AI output.
 - **Modern Styling:**
-	- Leveraged Tailwind CSS for rapid, responsive UI design.
+	-Tailwind CSS for rapid, responsive UI design.
 - **TypeScript:**
-	- Applied type safety for better code reliability and developer experience.
+	- Type safety for better code reliability.
 
-## Project Structure
-
-- `app/` — Main Next.js app directory
-	- `page.tsx` — Main debate simulator UI and logic
-	- `api/debate/route.ts` — API route for handling debate requests (LLM calls)
-	- `components/` — Reusable UI components (e.g., MessageBubble, ConclusionBox)
-	- `globals.css` — Global styles
-- `public/` — Static assets
-- `package.json` — Project dependencies and scripts
 
 ---
 
