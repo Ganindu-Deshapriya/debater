@@ -1,9 +1,9 @@
 
 # DebaterAI
 
-## How the Idea Was Born
+## How the Idea Was Born 💡
 
-While scrolling through reels the other day this whole "Was Thanos Right?" thing came back into my feed. And right as it came to my mind i thought why not argue with an AI about it? 🤔 Then while arguine with gemini my thought went to "why even bother when i can let 2 Agents or personalities can debate themselves and give me an answer? that way i get a show 🍿, and an ANSWER!✅
+While scrolling through reels the other day this whole "Was Thanos Right?" thing came back into my feed. And right as it came to my mind i thought why not argue with an AI about it? 🤔 Then while arguing with gemini my thought went to "why even bother when i can let 2 Agents or personalities can debate themselves and give me an answer? that way i get a show 🍿, and an ANSWER!✅
 And here it is,a Debater-AI, a fun project to now let 2 agents debate over the questions that keep you up at night.😅
 
 visit : https://debater-ai-gdesh.vercel.app/ 
